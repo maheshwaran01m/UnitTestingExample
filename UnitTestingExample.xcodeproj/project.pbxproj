@@ -14,6 +14,7 @@
 		9D34255F2AE7FB9300091558 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34255E2AE7FB9300091558 /* ContentViewModel.swift */; };
 		9D3425672AE7FCE600091558 /* UnitTestingExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3425662AE7FCE600091558 /* UnitTestingExampleTests.swift */; };
 		9D34256E2AE7FDD600091558 /* ContentViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34256D2AE7FDD600091558 /* ContentViewModel_Tests.swift */; };
+		9D3425702AE8117F00091558 /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34256F2AE8117F00091558 /* NetworkDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		9D3425642AE7FCE600091558 /* UnitTestingExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTestingExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3425662AE7FCE600091558 /* UnitTestingExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingExampleTests.swift; sourceTree = "<group>"; };
 		9D34256D2AE7FDD600091558 /* ContentViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel_Tests.swift; sourceTree = "<group>"; };
+		9D34256F2AE8117F00091558 /* NetworkDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				9D3425502AE7F9CF00091558 /* UnitTestingExampleApp.swift */,
 				9D3425522AE7F9CF00091558 /* ContentView.swift */,
 				9D34255E2AE7FB9300091558 /* ContentViewModel.swift */,
+				9D34256F2AE8117F00091558 /* NetworkDataService.swift */,
 				9D3425542AE7F9D000091558 /* Assets.xcassets */,
 				9D3425562AE7F9D000091558 /* Preview Content */,
 			);
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3425702AE8117F00091558 /* NetworkDataService.swift in Sources */,
 				9D3425532AE7F9CF00091558 /* ContentView.swift in Sources */,
 				9D3425512AE7F9CF00091558 /* UnitTestingExampleApp.swift in Sources */,
 				9D34255F2AE7FB9300091558 /* ContentViewModel.swift in Sources */,

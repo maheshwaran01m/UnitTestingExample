@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import UnitTestingExample
+import Combine
 
 /// `Naming Structure:`  ``test_[name of class/struct]_[variable or method name]_[expected result]``
 /// `Testing Structure` ``Given, When, Then``
@@ -15,6 +16,7 @@ import XCTest
 final class ContentViewModel_Tests: XCTestCase {
   
   var viewModel: ContentViewModel?
+  var cancelbag = Set<AnyCancellable>()
   
   override func setUpWithError() throws {
     // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -125,5 +127,40 @@ final class ContentViewModel_Tests: XCTestCase {
         let error = error as? ContentViewModel.DataError
         XCTAssertEqual(error, ContentViewModel.DataError.itemNotFound)
       }
+  }
+  
+  /// `Check:` ``Network Calls``
+  func test_DownloadDataWithEscaping() {
+    guard let viewModel else { return }
+    viewModel.downloadItems()
+    
+    let expectation = XCTestExpectation(description: "Waiting for records to downloads, for 3 seconds")
+    viewModel.$records
+      .dropFirst()
+      .sink { _ in
+        expectation.fulfill()
+      }
+      .store(in: &cancelbag)
+
+    wait(for: [expectation], timeout: 4)
+        
+    XCTAssertGreaterThan(viewModel.records.count, 0)
+  }
+  
+  func test_DownloadDataWithCombine() {
+    guard let viewModel else { return }
+    viewModel.downloadItemsUsingCombine()
+    
+    let expectation = XCTestExpectation(description: "Waiting for records to downloads, for a second")
+    viewModel.$records
+      .dropFirst()
+      .sink { _ in
+        expectation.fulfill()
+      }
+      .store(in: &cancelbag)
+
+    wait(for: [expectation], timeout: 4)
+        
+    XCTAssertGreaterThan(viewModel.records.count, 0)
   }
 }

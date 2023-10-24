@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class ContentViewModel: ObservableObject {
   
@@ -13,8 +14,13 @@ class ContentViewModel: ObservableObject {
   @Published var records = [String]()
   @Published var selectedItem: String?
   
-  init(isPremium: Bool) {
+  let dataServices: NetworkDataServiceProtocol
+  var cancelBag = Set<AnyCancellable>()
+  
+  init(isPremium: Bool,
+       dataServices: NetworkDataServiceProtocol = NetworkDataService()) {
     self.isPremium = isPremium
+    self.dataServices = dataServices
   }
   
   func add(_ item: String) {
@@ -41,5 +47,22 @@ class ContentViewModel: ObservableObject {
   
   enum DataError: LocalizedError {
     case noData, itemNotFound
+  }
+  
+  func downloadItems() {
+    dataServices.downloadItems { [weak self] records in
+      guard let self else { return }
+      self.records = records
+    }
+  }
+  
+  func downloadItemsUsingCombine() {
+    dataServices.downloadItemsWithCombine()
+      .sink { _ in
+        
+      } receiveValue: { [weak self] values in
+        self?.records = values
+      }
+      .store(in: &cancelBag)
   }
 }
