@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+  
+  @StateObject private var viewModel: ContentViewModel
+  
+  init(_ isPremium: Bool = false) {
+    _viewModel = .init(wrappedValue: .init(isPremium: isPremium))
+  }
+  
   var body: some View {
     VStack {
       Image(systemName: "globe")

@@ -11,6 +11,7 @@
 		9D3425532AE7F9CF00091558 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3425522AE7F9CF00091558 /* ContentView.swift */; };
 		9D3425552AE7F9D000091558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D3425542AE7F9D000091558 /* Assets.xcassets */; };
 		9D3425582AE7F9D000091558 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D3425572AE7F9D000091558 /* Preview Assets.xcassets */; };
+		9D34255F2AE7FB9300091558 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34255E2AE7FB9300091558 /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		9D3425522AE7F9CF00091558 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9D3425542AE7F9D000091558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D3425572AE7F9D000091558 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9D34255E2AE7FB9300091558 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				9D3425502AE7F9CF00091558 /* UnitTestingExampleApp.swift */,
 				9D3425522AE7F9CF00091558 /* ContentView.swift */,
+				9D34255E2AE7FB9300091558 /* ContentViewModel.swift */,
 				9D3425542AE7F9D000091558 /* Assets.xcassets */,
 				9D3425562AE7F9D000091558 /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				9D3425532AE7F9CF00091558 /* ContentView.swift in Sources */,
 				9D3425512AE7F9CF00091558 /* UnitTestingExampleApp.swift in Sources */,
+				9D34255F2AE7FB9300091558 /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
