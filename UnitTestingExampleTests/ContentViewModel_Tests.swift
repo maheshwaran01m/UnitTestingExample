@@ -8,6 +8,10 @@
 import XCTest
 @testable import UnitTestingExample
 
+/// `Naming Structure:`  ``test_[name of class/struct]_[variable or method name]_[expected result]``
+/// `Testing Structure` ``Given, When, Then``
+
+
 final class ContentViewModel_Tests: XCTestCase {
   
   override func setUpWithError() throws {
