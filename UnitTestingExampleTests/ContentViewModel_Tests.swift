@@ -22,14 +22,29 @@ final class ContentViewModel_Tests: XCTestCase {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
   }
   
-  /// Content: ``isPremium``
-  func test_ContentViewModelForIsPremium_shouldBeTrue() {
+  // MARK: - isPremium
+  
+  /// Check: ``isPremium``
+  func test_ContentViewModelForIsPremium() {
     // Given
-    let isPremium = true
+    let isPremium = Bool.random()
     // When
     let viewModel = ContentViewModel(isPremium: isPremium)
     
     // Then
-    XCTAssertTrue(viewModel.isPremium)
+//    XCTAssertTrue(viewModel.isPremium)
+    XCTAssertEqual(viewModel.isPremium, isPremium)
+  }
+  
+  func test_ContentViewModelForIsPremium_stress() {
+    for _ in 0..<100 {
+      // Given
+      let isPremium = Bool.random()
+      // When
+      let viewModel = ContentViewModel(isPremium: isPremium)
+      
+      // Then
+      XCTAssertEqual(viewModel.isPremium, isPremium)
+    }
   }
 }
