@@ -32,7 +32,7 @@ final class ContentViewModel_Tests: XCTestCase {
     let viewModel = ContentViewModel(isPremium: isPremium)
     
     // Then
-//    XCTAssertTrue(viewModel.isPremium)
+    //    XCTAssertTrue(viewModel.isPremium)
     XCTAssertEqual(viewModel.isPremium, isPremium)
   }
   
@@ -106,5 +106,20 @@ final class ContentViewModel_Tests: XCTestCase {
     
     XCTAssertNotNil(viewModel.selectedItem)
     XCTAssertEqual(viewModel.selectedItem, randomItem)
+  }
+  
+  /// `Check:` ``Save Item``
+  func test_saveData_withThrowError() {
+    let viewModel = ContentViewModel(isPremium: .random())
+    
+    XCTAssertThrowsError(try viewModel.save(""))
+    
+    XCTAssertThrowsError(
+      try viewModel.save(UUID().uuidString),
+      "Item Not found") { error in
+        
+        let error = error as? ContentViewModel.DataError
+        XCTAssertEqual(error, ContentViewModel.DataError.itemNotFound)
+      }
   }
 }

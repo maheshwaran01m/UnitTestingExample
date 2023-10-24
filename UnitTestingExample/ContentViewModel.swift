@@ -29,4 +29,17 @@ class ContentViewModel: ObservableObject {
     }
     selectedItem = value
   }
+  
+  func save(_ item: String) throws {
+    guard !item.isEmpty else { throw DataError.noData }
+
+    guard let value = records.first(where: { $0 == item }), value.isEmpty else {
+      throw DataError.itemNotFound
+    }
+    debugPrint("Save Item \(value)")
+  }
+  
+  enum DataError: LocalizedError {
+    case noData, itemNotFound
+  }
 }
