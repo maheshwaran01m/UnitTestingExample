@@ -47,4 +47,28 @@ final class ContentViewModel_Tests: XCTestCase {
       XCTAssertEqual(viewModel.isPremium, isPremium)
     }
   }
+  
+  /// Check: ``Records``
+  func test_ContentViewModel_addRecords() {
+    // Given
+    let viewModel = ContentViewModel(isPremium: .random())
+    // When
+    for _ in 0..<50 {
+      viewModel.add(UUID().uuidString)
+    }
+    
+    // Then
+    XCTAssertEqual(viewModel.records.count, 50)
+    XCTAssertGreaterThanOrEqual(viewModel.records.count, 0)
+  }
+  
+  func test_ContentViewModel_addRecords_withNotBlankString() {
+    // Given
+    let viewModel = ContentViewModel(isPremium: .random())
+    // When
+    viewModel.add("")
+    
+    // Then
+    XCTAssertTrue(viewModel.records.isEmpty)
+  }
 }
