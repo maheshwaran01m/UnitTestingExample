@@ -71,4 +71,40 @@ final class ContentViewModel_Tests: XCTestCase {
     // Then
     XCTAssertTrue(viewModel.records.isEmpty)
   }
+  
+  /// `Check` ``SelectedItem``
+  func test_SelectedItem_isNil() {
+    let viewModel = ContentViewModel(isPremium: .random())
+    
+    XCTAssertTrue(viewModel.selectedItem == nil)
+    XCTAssertNil(viewModel.selectedItem)
+  }
+  
+  func test_selectedItem_ForInvalidItem() {
+    let viewModel = ContentViewModel(isPremium: .random())
+    
+    let value = UUID().uuidString
+    viewModel.add(value)
+    viewModel.selectedItem(value)
+    
+    viewModel.selectedItem(UUID().uuidString)
+    
+    XCTAssertNil(viewModel.selectedItem)
+  }
+  
+  func test_selectedItem_stress() {
+    let viewModel = ContentViewModel(isPremium: .random())
+    
+    var records = [String]()
+    for _ in 0..<50 {
+      let value = UUID().uuidString
+      viewModel.add(value)
+      records.append(value)
+    }
+    let randomItem = records.randomElement() ?? ""
+    viewModel.selectedItem(randomItem)
+    
+    XCTAssertNotNil(viewModel.selectedItem)
+    XCTAssertEqual(viewModel.selectedItem, randomItem)
+  }
 }
