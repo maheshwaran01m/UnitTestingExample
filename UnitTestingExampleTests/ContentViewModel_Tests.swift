@@ -14,12 +14,16 @@ import XCTest
 
 final class ContentViewModel_Tests: XCTestCase {
   
+  var viewModel: ContentViewModel?
+  
   override func setUpWithError() throws {
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    viewModel = ContentViewModel(isPremium: .random())
   }
   
   override func tearDownWithError() throws {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    viewModel = nil
   }
   
   // MARK: - isPremium
@@ -51,7 +55,7 @@ final class ContentViewModel_Tests: XCTestCase {
   /// Check: ``Records``
   func test_ContentViewModel_addRecords() {
     // Given
-    let viewModel = ContentViewModel(isPremium: .random())
+    guard let viewModel else { return }
     // When
     for _ in 0..<50 {
       viewModel.add(UUID().uuidString)
@@ -64,7 +68,7 @@ final class ContentViewModel_Tests: XCTestCase {
   
   func test_ContentViewModel_addRecords_withNotBlankString() {
     // Given
-    let viewModel = ContentViewModel(isPremium: .random())
+    guard let viewModel else { return }
     // When
     viewModel.add("")
     
@@ -74,14 +78,14 @@ final class ContentViewModel_Tests: XCTestCase {
   
   /// `Check` ``SelectedItem``
   func test_SelectedItem_isNil() {
-    let viewModel = ContentViewModel(isPremium: .random())
+    guard let viewModel else { return }
     
     XCTAssertTrue(viewModel.selectedItem == nil)
     XCTAssertNil(viewModel.selectedItem)
   }
   
   func test_selectedItem_ForInvalidItem() {
-    let viewModel = ContentViewModel(isPremium: .random())
+    guard let viewModel else { return }
     
     let value = UUID().uuidString
     viewModel.add(value)
@@ -93,7 +97,7 @@ final class ContentViewModel_Tests: XCTestCase {
   }
   
   func test_selectedItem_stress() {
-    let viewModel = ContentViewModel(isPremium: .random())
+    guard let viewModel else { return }
     
     var records = [String]()
     for _ in 0..<50 {
@@ -110,7 +114,7 @@ final class ContentViewModel_Tests: XCTestCase {
   
   /// `Check:` ``Save Item``
   func test_saveData_withThrowError() {
-    let viewModel = ContentViewModel(isPremium: .random())
+    guard let viewModel else { return }
     
     XCTAssertThrowsError(try viewModel.save(""))
     
