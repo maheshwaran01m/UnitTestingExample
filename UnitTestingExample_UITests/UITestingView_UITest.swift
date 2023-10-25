@@ -18,6 +18,8 @@ final class UITestingView_UITest: XCTestCase {
   override func setUp() {
     super.setUp()
     continueAfterFailure = false
+//    app.launchArguments = ["-UI_isSignedIn"]
+//    app.launchEnvironment = ["-UI_isSignedIn": "true"]
     app.launch()
   }
   
@@ -206,7 +208,7 @@ final class UITestingView_UITest: XCTestCase {
     XCTAssertTrue(destination.exists)
   }
   
-  func test_singedInHomeView_navigationLinkToDestination_shouldNavigationToDestinationBack() {
+  func test_signedInHomeView_navigationLinkToDestination_shouldNavigationToDestinationBack() {
     // Given
     let textField = app.textFields["SignUpTextField"]
     
@@ -227,6 +229,23 @@ final class UITestingView_UITest: XCTestCase {
     let signUpButton = app.buttons["SignUpButton"]
     signUpButton.tap()
     
+    let navigationBar = app.navigationBars["Home"]
+    XCTAssertTrue(navigationBar.exists)
+    
+    let navigate = app.buttons["Navigate"]
+    navigate.tap()
+    
+    let destination = app.staticTexts["Destination"]
+    XCTAssertTrue(destination.exists)
+    
+    let backButton = app.navigationBars.buttons["Home"]
+    backButton.tap()
+    
+    //Then
+    XCTAssertTrue(navigationBar.exists)
+  }
+  
+  func test_alreadySingedInState_navigationLinkToDestination_shouldNavigationToDestinationBack() {
     let navigationBar = app.navigationBars["Home"]
     XCTAssertTrue(navigationBar.exists)
     
