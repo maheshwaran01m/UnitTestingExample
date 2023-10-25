@@ -72,6 +72,7 @@ private struct HomeScreenView: View {
             .padding(.horizontal)
             .background(Color.red.opacity(0.5))
             .clipShape(Capsule())
+            .accessibilityIdentifier("Show Alert Button")
         }
         .alert("Welcome To UI Testing", isPresented: $showAlert) {}
         
@@ -89,6 +90,7 @@ private struct HomeScreenView: View {
             .padding(.horizontal)
             .background(Color.green.opacity(0.5))
             .clipShape(Capsule())
+            .accessibilityIdentifier("SignUpTextField")
         }
         
       }
