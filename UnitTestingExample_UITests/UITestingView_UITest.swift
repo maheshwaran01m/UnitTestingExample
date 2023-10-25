@@ -7,6 +7,10 @@
 
 import XCTest
 
+/// `Naming Structure:` ``test_UnitOfWork_StateUnderTest_ExpectedBehaviour``
+/// `Naming Structure:`  ``test_[name of class/struct]_[variable or method name]_[expected result]``
+/// `Testing Structure` ``Given, When, Then``
+
 final class UITestingView_UITest: XCTestCase {
   
   override func setUpWithError() throws {
@@ -38,4 +42,6 @@ final class UITestingView_UITest: XCTestCase {
       }
     }
   }
+  
+  /// `check:` ``UITestingView``
 }
