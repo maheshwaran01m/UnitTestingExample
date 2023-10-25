@@ -172,4 +172,74 @@ final class UITestingView_UITest: XCTestCase {
       XCTAssertFalse(alert.exists)
     }
   }
+  
+  /// `Check:` ``Navigation Destination``
+  func test_singedInHomeView_navigationLinkToDestination_shouldNavigationToDestination() {
+    // Given
+    let textField = app.textFields["SignUpTextField"]
+    
+    // when
+    textField.tap()
+    
+    let keyA = app.keys["A"]
+    keyA.tap()
+    
+    let keya = app.keys["a"]
+    keya.tap()
+    keya.tap()
+    keya.tap()
+    
+    let returnButton = app.buttons["Return"]
+    returnButton.tap()
+    
+    let signUpButton = app.buttons["SignUpButton"]
+    signUpButton.tap()
+    
+    let navigationBar = app.navigationBars["Home"]
+    XCTAssertTrue(navigationBar.exists)
+    
+    let navigate = app.buttons["Navigate"]
+    navigate.tap()
+    
+    //Then
+    let destination = app.staticTexts["Destination"]
+    XCTAssertTrue(destination.exists)
+  }
+  
+  func test_singedInHomeView_navigationLinkToDestination_shouldNavigationToDestinationBack() {
+    // Given
+    let textField = app.textFields["SignUpTextField"]
+    
+    // when
+    textField.tap()
+    
+    let keyA = app.keys["A"]
+    keyA.tap()
+    
+    let keya = app.keys["a"]
+    keya.tap()
+    keya.tap()
+    keya.tap()
+    
+    let returnButton = app.buttons["Return"]
+    returnButton.tap()
+    
+    let signUpButton = app.buttons["SignUpButton"]
+    signUpButton.tap()
+    
+    let navigationBar = app.navigationBars["Home"]
+    XCTAssertTrue(navigationBar.exists)
+    
+    let navigate = app.buttons["Navigate"]
+    navigate.tap()
+    
+    let destination = app.staticTexts["Destination"]
+    XCTAssertTrue(destination.exists)
+    
+    let backButton = app.navigationBars.buttons["Home"]
+    backButton.tap()
+    
+    //Then
+    XCTAssertTrue(navigationBar.exists)
+  }
 }
