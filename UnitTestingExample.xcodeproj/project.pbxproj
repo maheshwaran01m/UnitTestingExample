@@ -15,6 +15,8 @@
 		9D3425672AE7FCE600091558 /* UnitTestingExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3425662AE7FCE600091558 /* UnitTestingExampleTests.swift */; };
 		9D34256E2AE7FDD600091558 /* ContentViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34256D2AE7FDD600091558 /* ContentViewModel_Tests.swift */; };
 		9D3425702AE8117F00091558 /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34256F2AE8117F00091558 /* NetworkDataService.swift */; };
+		9D3425732AE8A68300091558 /* UITestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3425722AE8A68300091558 /* UITestingView.swift */; };
+		9D3425762AE8A74700091558 /* UITestingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3425752AE8A74700091558 /* UITestingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		9D3425662AE7FCE600091558 /* UnitTestingExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingExampleTests.swift; sourceTree = "<group>"; };
 		9D34256D2AE7FDD600091558 /* ContentViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel_Tests.swift; sourceTree = "<group>"; };
 		9D34256F2AE8117F00091558 /* NetworkDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataService.swift; sourceTree = "<group>"; };
+		9D3425722AE8A68300091558 /* UITestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingView.swift; sourceTree = "<group>"; };
+		9D3425752AE8A74700091558 /* UITestingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				9D3425502AE7F9CF00091558 /* UnitTestingExampleApp.swift */,
-				9D3425522AE7F9CF00091558 /* ContentView.swift */,
-				9D34255E2AE7FB9300091558 /* ContentViewModel.swift */,
-				9D34256F2AE8117F00091558 /* NetworkDataService.swift */,
+				9D3425742AE8A69700091558 /* UnitTestingView */,
+				9D3425712AE8A66400091558 /* UITestingView */,
 				9D3425542AE7F9D000091558 /* Assets.xcassets */,
 				9D3425562AE7F9D000091558 /* Preview Content */,
 			);
@@ -104,6 +107,25 @@
 				9D34256D2AE7FDD600091558 /* ContentViewModel_Tests.swift */,
 			);
 			path = UnitTestingExampleTests;
+			sourceTree = "<group>";
+		};
+		9D3425712AE8A66400091558 /* UITestingView */ = {
+			isa = PBXGroup;
+			children = (
+				9D3425722AE8A68300091558 /* UITestingView.swift */,
+				9D3425752AE8A74700091558 /* UITestingViewModel.swift */,
+			);
+			path = UITestingView;
+			sourceTree = "<group>";
+		};
+		9D3425742AE8A69700091558 /* UnitTestingView */ = {
+			isa = PBXGroup;
+			children = (
+				9D3425522AE7F9CF00091558 /* ContentView.swift */,
+				9D34255E2AE7FB9300091558 /* ContentViewModel.swift */,
+				9D34256F2AE8117F00091558 /* NetworkDataService.swift */,
+			);
+			path = UnitTestingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +231,9 @@
 				9D3425702AE8117F00091558 /* NetworkDataService.swift in Sources */,
 				9D3425532AE7F9CF00091558 /* ContentView.swift in Sources */,
 				9D3425512AE7F9CF00091558 /* UnitTestingExampleApp.swift in Sources */,
+				9D3425762AE8A74700091558 /* UITestingViewModel.swift in Sources */,
 				9D34255F2AE7FB9300091558 /* ContentViewModel.swift in Sources */,
+				9D3425732AE8A68300091558 /* UITestingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
