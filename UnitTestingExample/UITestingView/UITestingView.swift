@@ -11,6 +11,10 @@ struct UITestingView: View {
   
   @StateObject private var viewModel = UITestingViewModel()
   
+  init(isSignedIn: Bool = false) {
+    _viewModel = .init(wrappedValue: .init(isSignedIn))
+  }
+  
   var body: some View {
     ZStack {
       LinearGradient(colors: [.blue.opacity(0.1), .blue.opacity(0.5)],
