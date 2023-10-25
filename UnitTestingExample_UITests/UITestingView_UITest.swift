@@ -96,4 +96,80 @@ final class UITestingView_UITest: XCTestCase {
     // Then
     XCTAssertTrue(navigationBar.exists)
   }
+  
+  /// `Check:` ``HomeScreenView``
+  func test_signedInHomeView_showAlertButton_displayAlert() {
+    // Given
+    let textField = app.textFields["SignUpTextField"]
+    
+    // when
+    textField.tap()
+    
+    let keyA = app.keys["A"]
+    keyA.tap()
+    
+    let keya = app.keys["a"]
+    keya.tap()
+    keya.tap()
+    keya.tap()
+    
+    let returnButton = app.buttons["Return"]
+    returnButton.tap()
+    
+    let signUpButton = app.buttons["SignUpButton"]
+    signUpButton.tap()
+    
+    let navigationBar = app.navigationBars["Home"]
+    
+    XCTAssertTrue(navigationBar.exists)
+    
+    let alertButton = app.buttons["Show Alert Button"]
+    alertButton.tap()
+    
+    let alert = app.alerts.firstMatch //["Welcome To UI Testing"]
+    
+    // Then
+    XCTAssertTrue(alert.exists)
+  }
+  
+  func test_signedInHomeView_showAlertButton_displayAlertAndDismiss() {
+    // Given
+    let textField = app.textFields["SignUpTextField"]
+    
+    // when
+    textField.tap()
+    
+    let keyA = app.keys["A"]
+    keyA.tap()
+    
+    let keya = app.keys["a"]
+    keya.tap()
+    keya.tap()
+    keya.tap()
+    
+    let returnButton = app.buttons["Return"]
+    returnButton.tap()
+    
+    let signUpButton = app.buttons["SignUpButton"]
+    signUpButton.tap()
+    
+    let navigationBar = app.navigationBars["Home"]
+    
+    XCTAssertTrue(navigationBar.exists)
+    
+    let alertButton = app.buttons["Show Alert Button"]
+    alertButton.tap()
+    
+    let alert = app.alerts.firstMatch //["Welcome To UI Testing"]
+    XCTAssertTrue(alert.exists)
+    
+    let alertOkButton = alert.buttons["OK"]
+    alertOkButton.tap()
+    
+    // sleep(1)
+    if alertOkButton.waitForExistence(timeout: 2) {
+      // Then
+      XCTAssertFalse(alert.exists)
+    }
+  }
 }
