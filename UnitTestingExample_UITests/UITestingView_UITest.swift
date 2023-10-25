@@ -13,6 +13,14 @@ import XCTest
 
 final class UITestingView_UITest: XCTestCase {
   
+  let app = XCUIApplication()
+  
+  override func setUp() {
+    super.setUp()
+    continueAfterFailure = false
+    app.launch()
+  }
+  
   override func setUpWithError() throws {
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
@@ -28,7 +36,6 @@ final class UITestingView_UITest: XCTestCase {
   
   func testExample() throws {
     // UI tests must launch the application that they test.
-    let app = XCUIApplication()
     app.launch()
     
     // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -44,4 +51,49 @@ final class UITestingView_UITest: XCTestCase {
   }
   
   /// `check:` ``UITestingView``
+  func test_UITestingView_signUpButton_ShouldNotSignIn() {
+    // Given
+    let textField = app.textFields["SignUpTextField"]
+    
+    // when
+    textField.tap()
+    
+    let returnButton = app.buttons["Return"]
+    returnButton.tap()
+    
+    let signUpButton = app.buttons["SignUpButton"]
+    signUpButton.tap()
+    
+    let navigationBar = app.navigationBars["Home"]
+    
+    // Then
+    XCTAssertFalse(navigationBar.exists)
+  }
+  
+  func test_UITestingView_signUpButton_ShouldSignIn() {
+    // Given
+    let textField = app.textFields["SignUpTextField"]
+    
+    // when
+    textField.tap()
+    
+    let keyA = app.keys["A"]
+    keyA.tap()
+    
+    let keya = app.keys["a"]
+    keya.tap()
+    keya.tap()
+    keya.tap()
+    
+    let returnButton = app.buttons["Return"]
+    returnButton.tap()
+    
+    let signUpButton = app.buttons["SignUpButton"]
+    signUpButton.tap()
+    
+    let navigationBar = app.navigationBars["Home"]
+    
+    // Then
+    XCTAssertTrue(navigationBar.exists)
+  }
 }

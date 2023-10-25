@@ -32,6 +32,7 @@ struct UITestingView: View {
             .textFieldStyle(.roundedBorder)
             .font(.headline)
             .padding()
+            .accessibilityIdentifier("SignUpTextField")
           
           Button {
             withAnimation(.spring()) {
@@ -44,17 +45,13 @@ struct UITestingView: View {
               .padding(.horizontal)
               .background(Color.green.opacity(0.5))
               .clipShape(Capsule())
+              .accessibilityIdentifier("SignUpButton")
           }
         }
         .transition(.move(edge: .leading))
       }
     }
   }
-  
-  private func homeView() -> some View {
-    Text("Hello World")
-  }
-
 }
 
 private struct HomeScreenView: View {
