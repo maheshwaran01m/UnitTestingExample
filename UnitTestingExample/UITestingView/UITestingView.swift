@@ -25,15 +25,7 @@ struct UITestingView: View {
   private var signUpView: some View {
     ZStack {
       if viewModel.isSignedIn {
-        
-        Text("Hello Welcome")
-          .font(.headline)
-          .padding()
-          .padding(.horizontal)
-          .background(Color.green.opacity(0.5))
-          .clipShape(Capsule())
-          .transition(.move(edge: .trailing))
-      
+        HomeScreenView()
       } else {
         VStack {
           TextField(viewModel.placeholderText, text: $viewModel.textValue)
@@ -63,6 +55,49 @@ struct UITestingView: View {
     Text("Hello World")
   }
 
+}
+
+private struct HomeScreenView: View {
+  
+  @State private var showAlert: Bool = false
+  
+  var body: some View {
+    NavigationStack {
+      
+      VStack(spacing: 20) {
+        
+        Button {
+          showAlert.toggle()
+        } label: {
+          Text("Show Alert")
+            .font(.headline)
+            .padding()
+            .padding(.horizontal)
+            .background(Color.red.opacity(0.5))
+            .clipShape(Capsule())
+        }
+        .alert("Welcome To UI Testing", isPresented: $showAlert) {}
+        
+        NavigationLink {
+          Text("Destination")
+            .font(.headline)
+            .padding()
+            .padding(.horizontal)
+            .background(Color.green.opacity(0.5))
+            .clipShape(Capsule())
+        } label: {
+          Text("Navigate")
+            .font(.headline)
+            .padding()
+            .padding(.horizontal)
+            .background(Color.green.opacity(0.5))
+            .clipShape(Capsule())
+        }
+        
+      }
+      .navigationTitle("Home")
+    }
+  }
 }
 
 #Preview {
